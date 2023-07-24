@@ -23,7 +23,7 @@ function App() {
   const getdata = async (req, res) => {
     try {
       dispatch(showLoading());
-      const response = await axios.get('/getdata');
+      const response = await axios.get("/getdata");
       dispatch(setPortfolioData(response.data));
       dispatch(ReloadData(false));
       dispatch(hideLoading());
@@ -48,11 +48,13 @@ function App() {
   return (
     <BrowserRouter>
       {loading ? <Loader /> : null}
-      <Routes>
-        <Route path="/admin" element={<AdminIndex />} />
-        <Route path="/admin_login" element={<AdminLogin />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
+      {portfolioData && (
+        <Routes>
+          <Route path="/admin" element={<AdminIndex />} />
+          <Route path="/admin_login" element={<AdminLogin />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }
