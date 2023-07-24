@@ -46,7 +46,7 @@ function App() {
   }, [reloadData]); //eslint-disable-line
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/varisrajak.netlify.app">
       {loading ? <Loader /> : null}
       {portfolioData && (
         <Routes>
