@@ -8,6 +8,7 @@ import AdminEducation from "./AdminEducation";
 import AdminProject from "./AdminProject";
 import AdminCertificates from "./AdminCertificates";
 import AdminContact from "./AdminContact";
+import AdminExperience from "./AdminExperience";
 const { TabPane } = Tabs;
 
 function AdminIndex() {
@@ -45,13 +46,16 @@ function AdminIndex() {
             <TabPane tab="Education" key="3">
               <AdminEducation />
             </TabPane>
-            <TabPane tab="Project" key="4">
+            <TabPane tab="Experience" key="4">
+              <AdminExperience />
+            </TabPane>
+            <TabPane tab="Project" key="5">
               <AdminProject />
             </TabPane>
-            <TabPane tab="Certificates" key="5">
+            <TabPane tab="Certificates" key="6">
               <AdminCertificates />
             </TabPane>
-            <TabPane tab="Contact" key="6">
+            <TabPane tab="Contact" key="7">
               <AdminContact />
             </TabPane>
           </Tabs>
