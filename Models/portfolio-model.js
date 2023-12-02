@@ -70,6 +70,25 @@ const educationSchema = new mongoose.Schema({
   },
 });
 
+const experienceSchema = new mongoose.Schema({
+  company: {
+    type: String,
+    required: true,
+  },
+  post: {
+    type: String,
+    required: true,
+  },
+  period: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
 const projectsSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -149,6 +168,7 @@ module.exports = {
   Intro: mongoose.model("intros", introSchema),
   About: mongoose.model("about", aboutSchema),
   Education: mongoose.model("educations", educationSchema),
+  Experience: mongoose.model("experiences", experienceSchema),
   Project: mongoose.model("projects", projectsSchema),
   Certificate: mongoose.model("certificates", certificatesSchema),
   Contact: mongoose.model("contacts", contactSchema),

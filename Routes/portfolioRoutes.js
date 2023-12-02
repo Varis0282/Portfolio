@@ -6,7 +6,8 @@ const {
   Education,
   Project,
   Certificate,
-  Contact
+  Contact,
+  Experience
 } = require("../Models/portfolio-model");
 const User = require("../Models/user-model");
 //Get the portfolio data from the server
@@ -15,6 +16,7 @@ router.get("/getdata", async (req, res) => {
     const intros = await Intro.find();
     const abouts = await About.find();
     const educations = await Education.find();
+    const experience = await Experience.find();
     const projects = await Project.find();
     const certificates = await Certificate.find();
     const contacts = await Contact.find();
@@ -22,6 +24,7 @@ router.get("/getdata", async (req, res) => {
       intro: intros[0],
       about: abouts[0],
       educations: educations,
+      experiences: experiences,
       projects: projects,
       certificates: certificates,
       contact: contacts[0],
@@ -30,6 +33,7 @@ router.get("/getdata", async (req, res) => {
       intro: intros[0],
       about: abouts[0],
       educations: educations,
+      experiences: experiences,
       projects: projects,
       certificates: certificates,
       contact: contacts[0],
@@ -116,6 +120,53 @@ router.post("/delete_education", async (req, res) => {
       data: education,
       success: true,
       message: "Education deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+//Add Experience
+router.post("/add_experience", async (req, res) => {
+  try {
+    const experience = new Experience(req.body);
+    await experience.save();
+    res.status(200).send({
+      data: experience,
+      success: true,
+      message: "Experience added successfully",
+    });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+//Update Experience
+router.post("/update_experience", async (req, res) => {
+  try {
+    const experience = await Experience.findByIdAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: experience,
+      success: true,
+      message: "Experience updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+//Delete Experience
+router.post("/delete_experience", async (req, res) => {
+  try {
+    const experience = await Experience.findByIdAndDelete({ _id: req.body._id });
+    res.status(200).send({
+      data: experience,
+      success: true,
+      message: "Experience deleted successfully",
     });
   } catch (error) {
     res.status(500).send({ error });
