@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(require('./Routes/portfolioRoutes'));
 
 // deployment config
-const path = require("path");
 __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
