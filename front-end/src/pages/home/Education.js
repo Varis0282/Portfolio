@@ -7,7 +7,7 @@ function Experience() {
 
   const { portfolioData } = useSelector((state) => state.root);
 
-  const {experience} = portfolioData;
+  const {experiences} = portfolioData;
 
   return (
     <div>
