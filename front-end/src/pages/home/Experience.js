@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Sectiontitle from "../../components/Sectiontitle";
 import { useSelector } from "react-redux";
 
@@ -9,8 +9,24 @@ function Experience() {
 
   const {educations} = portfolioData;
 
+  const [isVisible, setIsVisible] = useState(false);
+  const experienceRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const experienceTop = experienceRef.current.getBoundingClientRect().top;
+
+      if (experienceTop < window.innerHeight * 0.75) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div>
+    <div ref={experienceRef} id="experienceSection" className={`fade-in ${isVisible ? "visible" : ""}`}>
       <Sectiontitle title={"Educations"} />
       <div className="flex py-10 gap-20 sm:flex-col">
         <div className="flex flex-col gap-10 border-l-4 border-[#2ca69862] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full sm:border-none">

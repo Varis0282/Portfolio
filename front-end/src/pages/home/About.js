@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Sectiontitle from "../../components/Sectiontitle";
 import lottie from "lottie-web";
 import { useSelector } from "react-redux";
@@ -9,6 +9,11 @@ function About() {
   const { skills, lottieURL, description1, description2 } = portfolioData.about;
 
   const lottieRef = React.useRef(null);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible2, setIsVisible2] = useState(false);
+  const aboutRef = useRef(null);
+  const skillRef = useRef(null);
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -22,8 +27,34 @@ function About() {
     return () => animation.destroy();
   }, [lottieURL]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutTop = aboutRef.current.getBoundingClientRect().top;
+
+      if (aboutTop < window.innerHeight * 0.75) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSkills = skillRef.current.getBoundingClientRect().top;
+
+      if (aboutSkills < window.innerHeight * 0.999) {
+        setIsVisible2(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
   return (
-    <div>
+    <div ref={aboutRef} id="aboutSection" className={`fade-in ${isVisible ? "visible" : ""}`}>
       <Sectiontitle title="About" />
       <div className="-mt-10 sm:-mt-16 flex w-full items-center justify-center sm:flex-col">
         <div
@@ -43,7 +74,7 @@ function About() {
         {skills.length > 0 && (
           <div className="flex flex-wrap gap-10 mt-5">
             {skills.map((skill) => (
-              <div className="border border-tertiary py-3 px-10">
+              <div ref={skillRef} className={`border border-tertiary py-3 px-10 fade-in ${isVisible2 ? "visible" : ""}`}>
                 <h1 className="text-tertiary ">{skill}</h1>
               </div>
             ))}

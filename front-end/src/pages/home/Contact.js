@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Sectiontitle from "../../components/Sectiontitle";
 import lottie from "lottie-web"; // Import the Lottie Player library
 import { useSelector } from "react-redux";
@@ -8,6 +8,22 @@ function Contact() {
 
   const { contact } = portfolioData;
   const lottieRef = React.useRef(null);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const contactRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const contactTop = contactRef.current.getBoundingClientRect().top;
+
+      if (contactTop < window.innerHeight * 0.75) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -22,7 +38,7 @@ function Contact() {
   }, []);
 
   return (
-    <div>
+    <div ref={contactRef} id="contactSection" className={`fade-in ${isVisible ? "visible" : ""}`}>
       <Sectiontitle title={"Say Hello !"} />
       <div className="flex sm:flex-col items-center justify-between">
         <div className="flex flex-col gap-1 text-sm">
