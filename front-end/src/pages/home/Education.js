@@ -53,7 +53,16 @@ function Experience() {
         <div className="flex flex-col gap-5 w-2/3 sm:w-full">
             <h1 className="text-secondary text-xl">{experiences[selectedItemIndex].post}</h1>
             <h1 className="text-tertiary text-xl">{experiences[selectedItemIndex].period}</h1>
-            <p className="text-white">{experiences[selectedItemIndex].description}</p>
+            <p className="text-white">
+            {experiences[selectedItemIndex].description.split('•').map((bullet, index) => (
+              index !== 0 &&
+              <span key={index}>
+                {index !== 0 && <span>&#8226;</span>}
+                {bullet.trim()} 
+                <br /> 
+              </span>
+            ))}
+          </p>
         </div>
       </div>
     </div>

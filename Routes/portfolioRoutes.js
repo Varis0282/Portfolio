@@ -15,10 +15,10 @@ router.get("/getdata", async (req, res) => {
   try {
     const intros = await Intro.find();
     const abouts = await About.find();
-    const educations = await Education.find();
-    const experiences = await Experience.find();
-    const projects = await Project.find();
-    const certificates = await Certificate.find();
+    const educations = await Education.find().sort({ _id: 1 });  
+    const experiences = await Experience.find().sort({ _id: -1 });
+    const projects = await Project.find().sort({ _id: -1 });
+    const certificates = await Certificate.find().sort({ _id: -1 });
     const contacts = await Contact.find();
     const data = {
       intro: intros[0],
