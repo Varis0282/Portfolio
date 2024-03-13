@@ -29,7 +29,10 @@ const get = async () => {
   console.log(result);
 }
 
-app.listen(port, () => {
+setInterval(() => {
   get();
+}, 10000);
+
+app.listen(port, () => {
   console.log('App listening on port ' + port);
 });
