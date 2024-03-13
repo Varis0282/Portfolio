@@ -24,6 +24,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+const get = async () => {
+  const result = await fetch('https://varisrajak.onrender.com/')
+  console.log(result);
+}
+
 app.listen(port, () => {
+  get();
   console.log('App listening on port ' + port);
 });
