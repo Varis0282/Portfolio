@@ -29,7 +29,7 @@ function Intro() {
       <h1 className="text-white text-7xl  sm:text-3xl font-semibold sm:-mb-3">
         {caption||''}
       </h1>
-      <p className="text-tertiary w-1/2 sm:w-4/5 font-medium ">
+      <p className="text-tertiary text-justify w-1/2 sm:w-4/5 font-medium ">
         {description||''}
       </p>
       <button className="border-2 border-tertiary text-tertiary px-5 py-3 rounded hover:bg-tertiary hover:text-white" onClick={scrollToSection}>
