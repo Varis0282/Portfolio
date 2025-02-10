@@ -25,16 +25,26 @@ function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const animation = lottie.loadAnimation({
-      container: lottieRef.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      path: "https://lottie.host/a7fdaf42-64a7-4195-a375-3723038d143e/BtF5QQqjaN.json",
-    });
-
-    return () => animation.destroy();
+  useEffect(() => {  
+    fetch('https://lottie.host/a7fdaf42-64a7-4195-a375-3723038d143e/BtF5QQqjaN.json')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Lottie JSON file not found: ${'https://lottie.host/a7fdaf42-64a7-4195-a375-3723038d143e/BtF5QQqjaN.json'}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        lottie.loadAnimation({
+          container: lottieRef.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: data, // Use fetched JSON data
+        });
+      })
+      .catch((error) => console.error("Error loading Lottie animation:", error));
+  
+    return () => lottie.destroy();
   }, []);
 
   return (

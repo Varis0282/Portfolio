@@ -65,7 +65,7 @@ function Courses() {
               {certificates[selectedItemIndex].description}
             </p>
             <p className="text-tertiary">
-            <a href={certificates[selectedItemIndex].link} target="_blank" rel="noreferrer">Click Here<i class="ri-arrow-right-up-line"></i></a>
+            <a href={certificates[selectedItemIndex].link} target="_blank" rel="noreferrer">Click Here<i className="ri-arrow-right-up-line"></i></a>
             </p>
           </div>
           <img
