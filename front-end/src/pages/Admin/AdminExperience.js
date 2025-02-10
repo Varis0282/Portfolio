@@ -78,7 +78,7 @@ function AdminExperience() {
       </div>
       <div className="grid grid-cols-4 gap-5 sm:grid-cols-1">
         {experiences.map((experience, index) => (
-          <div className="shadow border p-5 border-gray-400 rounded-lg flex flex-col gap-2">
+          <div className="shadow border p-5 border-gray-400 rounded-lg flex flex-col gap-2" key={index}>
             <h1 className="text-primary text-xl font-semibold">
               {experience.degree}
             </h1>

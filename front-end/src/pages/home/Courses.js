@@ -37,6 +37,7 @@ function Courses() {
                 setSelectedItemIndex(index);
               }}
               className="cursor-pointer"
+              key={index}
             >
               <h1
                 className={`text-xl px-5 sm:py-3

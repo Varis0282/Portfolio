@@ -7,7 +7,7 @@ function Projects() {
 
   const { portfolioData } = useSelector((state) => state.root);
 
-  const {projects} = portfolioData;
+  const { projects } = portfolioData;
 
   const [isVisible, setIsVisible] = useState(false);
   const projectRef = useRef(null);
@@ -36,14 +36,14 @@ function Projects() {
                 setSelectedItemIndex(index);
               }}
               className="cursor-pointer"
+              key={index}
             >
               <h1
                 className={`text-xl px-5 sm:py-3
-                ${
-                  selectedItemIndex === index
+                ${selectedItemIndex === index
                     ? "text-tertiary border-tertiary border-l-4 -ml-1 rounded-sm bg-[#54d6bc3c] py-3 sm:border-b-2 sm:border-l-0 sm:-ml-0"
                     : "text-white"
-                }`}
+                  }`}
               >
                 {project.title}
               </h1>
@@ -52,7 +52,7 @@ function Projects() {
         </div>
 
         <div className="flex items-center justify-center gap-10 sm:flex-col w-2/3 sm:w-full">
-            <img src={projects[selectedItemIndex].image} className="h-60 w-72" alt=""/>
+          <img src={projects[selectedItemIndex].image} className="h-60 w-72" alt="" />
           <div className="flex flex-col gap-5">
             <h1 className="text-secondary text-xl">
               {projects[selectedItemIndex].title}
@@ -61,10 +61,10 @@ function Projects() {
               {projects[selectedItemIndex].description || ''}
             </p>
             <p className="text-white">
-             {projects[selectedItemIndex].technologies+"," || ''} 
+              {projects[selectedItemIndex].technologies + "," || ''}
             </p>
             <p className="text-tertiary">
-            <a href={projects[selectedItemIndex].link}>Click Here<i class="ri-arrow-right-up-line"></i></a>
+              <a href={projects[selectedItemIndex].link}>Click Here<i className="ri-arrow-right-up-line"></i></a>
             </p>
           </div>
         </div>

@@ -78,7 +78,7 @@ function AdminEducation() {
       </div>
       <div className="grid grid-cols-4 gap-5 sm:grid-cols-1">
         {educations.map((education, index) => (
-          <div className="shadow border p-5 border-gray-400 rounded-lg flex flex-col gap-2">
+          <div className="shadow border p-5 border-gray-400 rounded-lg flex flex-col gap-2" key={index}>
             <h1 className="text-primary text-xl font-semibold">
               {education.degree}
             </h1>

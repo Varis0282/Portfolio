@@ -80,7 +80,7 @@ function AdminProject() {
       </div>
       <div className="grid grid-cols-3 gap-5 sm:grid-cols-1">
         {projects.map((project, index) => (
-          <div className="shadow border p-5 border-gray-400 flex flex-col gap-2 rounded-lg">
+          <div className="shadow border p-5 border-gray-400 flex flex-col gap-2 rounded-lg" key={index}>
             <h1 className="text-primary text-xl font-semibold">
               {project.title}
             </h1>

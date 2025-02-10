@@ -73,8 +73,8 @@ function About() {
         </h1>
         {skills.length > 0 && (
           <div className="flex flex-wrap gap-10 mt-5">
-            {skills.map((skill) => (
-              <div ref={skillRef} className={`border border-tertiary py-3 px-10 fade-in ${isVisible2 ? "visible" : ""}`}>
+            {skills.map((skill,index) => (
+              <div ref={skillRef} className={`border border-tertiary py-3 px-10 fade-in ${isVisible2 ? "visible" : ""}`} key={index}>
                 <h1 className="text-tertiary ">{skill}</h1>
               </div>
             ))}
